@@ -19,7 +19,7 @@ from rest_framework.routers import DefaultRouter
 from contacto.views import ContactoViewSet
 
 router = DefaultRouter()
-router.register(r'contacto', ContactoViewSet)
+router.register(r'contacto', ContactoViewSet, basename='contacto')
 
 urlpatterns = router.urls
 
