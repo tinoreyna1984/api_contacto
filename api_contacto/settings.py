@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', # agregar
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'api_contacto.urls'
 
 TEMPLATES = [
