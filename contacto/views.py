@@ -14,22 +14,26 @@ class ContactoViewSet(viewsets.ModelViewSet):
     serializer_class = ContactoSerializer
     queryset = Contacto.objects.all()
 
-    def retrieve(self, request, pk=None):
-        """Handles getting an object by its ID."""
-
-        return Response({'http_method': 'GET'})
-
-    def update(self, request, pk=None):
-        """Handles updating an object."""
-
-        return Response({'http_method': 'PUT'})
-
+    def update(self, request, *args, **kwargs):
+        contacto = Contacto.objects.get()
+        data = request.data
+        contacto.nombre = data['nombre']
+        contacto.apellido = data['apellido']
+        contacto.fono = data['fono']
+        contacto.email = data['email']
+        contacto.fecha_nac = data['fecha_nac']
+        contacto.save()
+        serializer = ContactoSerializer(contacto)
+        return Response(serializer.data)
+    
+    """ 
     def partial_update(self, request, pk=None):
-        """Handles updating part of an object."""
+        #Handles updating part of an object
 
         return Response({'http_method': 'PATCH'})
     
     def destroy(self, request, pk=None):
-        """Handle removing an object"""
+        #Handle removing an object
 
         return Response({'http_method': 'DELETE'})
+    """
