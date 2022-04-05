@@ -8,3 +8,4 @@ from .serializers import ContactoSerializer
 class ContactoViewSet(viewsets.ModelViewSet):
     serializer_class = ContactoSerializer
     queryset = Contacto.objects.all()
+    http_method_names = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options']
